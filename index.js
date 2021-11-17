@@ -1,7 +1,8 @@
 module.exports = async (body, res) => {
 
   const {topic, partition, offset} = body
-  const broker = 'pvdevkafka01'
+  // const broker = 'pvdevkafka01:9093'
+  const broker = 'kafka-databus.pvdev:9092'
 
   console.log(topic, partition, offset)
 
@@ -19,6 +20,6 @@ module.exports = async (body, res) => {
     }
   })
 
-  return res.status(200).send(JSON.parse(data))
+  return res.status(200).send(data ? JSON.parse(data) : [])
     
 }
